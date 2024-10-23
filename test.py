@@ -54,3 +54,5 @@ class TestSimpleNumber(unittest.TestCase):
 
         # Check if the output is as expected (should be empty)
         self.assertEqual(captured_output.getvalue().strip(), "")
+
+

@@ -7,7 +7,8 @@ def simple_number(a, b):
                 break
         if is_simple and num > 1:
             print(num)
-if __name__ == 'main':
+if __name__ == '__main__':
+
     a = int(input())
     b = int(input())
-    simple_number(1, 25)
+    simple_number(a,b)
