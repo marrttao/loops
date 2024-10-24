@@ -2,7 +2,7 @@ def multiplication_table(start, end):
     result = []
     for i in range(start, end + 1):
         row = []
-        for j in range(start, end + 1):
+        for j in range(1, 10+1):
             row.append(f"{i} * {j} = {i * j}")
             print(f"{i} * {j} = {i * j}", end = " ")
             result.append(row)
