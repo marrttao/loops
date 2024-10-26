@@ -21,13 +21,12 @@ class TestChessDesk(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         expected_output = (
-            "*** --- *** --- *** --- *** --- \n"
-            "*** --- *** --- *** --- *** --- \n"
-            "*** --- *** --- *** --- *** --- \n"
-            "*** --- *** --- *** --- *** --- \n"
-            "*** --- *** --- *** --- *** --- \n"
-            "*** --- *** --- *** --- *** --- \n"
-        )
+            '*** --- *** --- *** --- *** --- \n'
+            '--- *** --- *** --- *** --- *** '
+            '*** --- *** --- *** --- *** --- \n'
+            '--- *** --- *** --- *** --- *** '
+            '*** --- *** --- *** --- *** --- \n'
+            '--- *** --- *** --- *** --- *** ')
         self.assertEqual(captured_output.getvalue(), expected_output)
 
     # Handles zero or negative `large_of_square` gracefully

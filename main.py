@@ -6,11 +6,14 @@ def chess_desk(large_of_square):
         return
     rows = 6
     columns = 8
-    for i in range(rows):
+    for i in range(rows //2):
         for j in range(columns // 2):
             print('*' * large_of_square, end=' ')
             print('-' * large_of_square, end=' ')
         print()
+        for j in range(columns // 2):
+            print('-' * large_of_square, end=' ')
+            print('*' * large_of_square, end=' ')
 if __name__ == '__main__':
     size = int(input())
     chess_desk(size)
