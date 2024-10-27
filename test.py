@@ -64,5 +64,26 @@ class TestGetLevel(unittest.TestCase):
 
     # Manages cases where a_min equals a_max or b_min equals b_max
 
+
+
+
+
+
+    def test_bad_mark(self):
+        self.assertEqual(calculate_grade(5), "Your mark is bad")
+        self.assertEqual(calculate_grade(3), "Your mark is bad")
+
+    def test_middle_mark(self):
+        self.assertEqual(calculate_grade(6), "Your mark is middle")
+        self.assertEqual(calculate_grade(9), "Your mark is middle")
+
+    def test_good_mark(self):
+        self.assertEqual(calculate_grade(10), "Your mark is good")
+        self.assertEqual(calculate_grade(15), "Your mark is good")
+
+
+if __name__ == "__main__":
+    unittest.main()
+
 if __name__ == '__main__':
     unittest.main()
