@@ -21,7 +21,7 @@ def get_level(name, num_questions, a_min, a_max, b_min=1, b_max=10):
 def calculate_grade(correct_answers):
     if correct_answers <= 5:
         print("Your mark is bad")
-    elif correct_answers >= 9:
+    elif correct_answers <= 9:
         print("Your mark is middle")
     else:
         print("Your mark is good")
