@@ -65,7 +65,64 @@ class TestGetLevel(unittest.TestCase):
     # Manages cases where a_min equals a_max or b_min equals b_max
 
 
+import unittest
+from unittest.mock import patch
+from main import calculate_grade, generate_question, get_level
 
+class TestCalculateGrade(unittest.TestCase):
+    def test_returns_bad_for_five_or_fewer(self):
+        with patch('builtins.print') as mocked_print:
+            calculate_grade(5)
+            mocked_print.assert_called_once_with("Your mark is bad")
+
+    def test_handles_exactly_nine_correct_answers(self):
+        with patch('builtins.print') as mocked_print:
+            calculate_grade(9)
+            mocked_print.assert_called_once_with("Your mark is middle")
+
+    def test_bad_mark(self):
+        self.assertEqual(calculate_grade(5), "Your mark is bad")
+        self.assertEqual(calculate_grade(3), "Your mark is bad")
+
+    def test_middle_mark(self):
+        self.assertEqual(calculate_grade(6), "Your mark is middle")
+        self.assertEqual(calculate_grade(9), "Your mark is middle")
+
+    def test_good_mark(self):
+        self.assertEqual(calculate_grade(10), "Your mark is good")
+        self.assertEqual(calculate_grade(15), "Your mark is good")
+
+
+class TestGenerateQuestion(unittest.TestCase):
+    def test_random_integer_generation_within_range(self):
+        a_min, a_max = 1, 10
+        b_min, b_max = 1, 10
+        with unittest.mock.patch('builtins.input', return_value='0'):
+            result = generate_question(a_min, a_max, b_min, b_max)
+            self.assertIn(result, [False, True])
+
+    def test_single_value_range(self):
+        a_min = a_max = 5
+        b_min = b_max = 5
+        with unittest.mock.patch('builtins.input', return_value='25'):
+            result = generate_question(a_min, a_max, b_min, b_max)
+            self.assertTrue(result)
+
+    def test_invalid_range_handling(self):
+        a_min, a_max = 10, 1
+        b_min, b_max = 10, 1
+        with self.assertRaises(ValueError):
+            generate_question(a_min, a_max, b_min, b_max)
+
+
+class TestGetLevel(unittest.TestCase):
+    def test_zero_questions(self):
+        result = get_level("Test Level", 0, 1, 10)
+        self.assertEqual(result, 0)
+
+
+if __name__ == "__main__":
+    unittest.main()
 
 
 
